@@ -43,7 +43,6 @@ If you need other information about hardware, please open an issue.
     ```bash
     python run_preprocess_direct_ag_news.py
     python run_preprocess_direct_ag_news.py --sample=False # Use it for full evaluation
-    python run
     ```
 
 2. Inference to compute the conditional probability using LLaMA and predict class.
@@ -63,7 +62,6 @@ If you need other information about hardware, please open an issue.
     ```bash
     python run_preprocess_channel_ag_news.py
     python run_preprocess_channel_ag_news.py --sample=False # Use it for full evaluation
-    python run
     ```
 
 2. Inference to compute the conditional probability using LLaMA and predict class.

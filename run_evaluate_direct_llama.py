@@ -69,7 +69,7 @@ def main(
     ckpt_dir: str,
     tokenizer_path: str,
     max_seq_len: int = 1024,
-    max_batch_size: int = 32,
+    max_batch_size: int = 16,
 ):
     local_rank, world_size = setup_model_parallel()
     if local_rank > 0:
@@ -91,7 +91,13 @@ def main(
             for label_word in example["label_words"]:
                 prompts.append(example["prompt"])
                 completions.append(example["completion"].format(label_word=label_word))
-        ppl = generator.compute_ppl(prompts, completions)
+        ppl = []
+        for micro_start_idx in range(0, len(prompts), max_batch_size):
+            micro_end_idx = min(micro_start_idx + max_batch_size, len(prompts))
+            micro_prompts = prompts[micro_start_idx:micro_end_idx]
+            micro_completions = completions[micro_start_idx:micro_end_idx]
+            ppl.extend(generator.compute_ppl(micro_prompts, micro_completions))
+
         idx = 0
         for example in batch:
             example_ppl = []

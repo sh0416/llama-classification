@@ -4,7 +4,7 @@ import fire
 from datasets import load_dataset
 
 
-def main(sample=True):
+def main(data_path="samples/inputs_channel_ag_news.json", sample=True):
     dataset = load_dataset("ag_news")
     label_words = ["World", "Sports", "Business", "Science and technology"]
 
@@ -36,7 +36,7 @@ def main(sample=True):
 
     # Save data
     data = sorted(data, key=lambda x: -len(x["prompt"] + x["completion"]))
-    with open("samples/inputs_channel_ag_news.json", "w") as f:
+    with open(data_path, "w") as f:
         json.dump(data, f, indent=2)
 
 
