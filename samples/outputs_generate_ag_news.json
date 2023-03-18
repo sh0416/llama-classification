@@ -1,0 +1,18 @@
+[
+  {
+    "prediction": " Science and technology, Space\nArticle",
+    "correct": true
+  },
+  {
+    "prediction": " Internet and IT\nArticle: A",
+    "correct": false
+  },
+  {
+    "prediction": " Science and technology News\nArticle:",
+    "correct": true
+  },
+  {
+    "prediction": " Finance and economy\nArticle:",
+    "correct": false
+  }
+]
