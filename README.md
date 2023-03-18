@@ -60,9 +60,18 @@ If you need other information about hardware, please open an issue.
         --tokenizer_path checkpoints/llama/tokenizer.model
     ```
 
+6. To evaluate using `channel` mode, which is the comparision between candidate completions, use the following script.
+    ```bash
+    torchrun --nproc_per_node 1 run_evaluate_channel_llama.py \
+        --data_path samples/inputs_channel_ag_news.json \
+        --output_path samples/outputs_channel_ag_news.json \
+        --ckpt_dir checkpoints/llama/7B \
+        --tokenizer_path checkpoints/llama/tokenizer.model
+    ```
+
 ## Todo list
 
-- [ ] Implement channel method
+- [x] Implement channel method
 - [ ] Implement other calibration method
 - [ ] Support other dataset inside the huggingface datasets
 - [ ] Other evaluation metric to measure the different characteristic of foundation model (LLaMA)
