@@ -12,6 +12,8 @@ If you need other information about hardware, please open an issue.
 
 ## How to use
 
+### Experimental setup
+
 1. Get the checkpoint from official LLaMA repository from [here](https://github.com/facebookresearch/llama).  
     1-1. I assume that the checkpoint would be located in the project root direction and the contents would be arranged as follow.
     ```text
@@ -33,38 +35,53 @@ If you need other information about hardware, please open an issue.
     pip install -r requirements.txt
     ```
 
-3. Preprocess the data from huggingface datasets using the following scripts. From now on, we use the ag_news dataset.
+### Method: Direct
+
+`Direct` is to compare the conditional probability `p(y|x)`.
+
+1. Preprocess the data from huggingface datasets using the following scripts. From now on, we use the ag_news dataset.
     ```bash
-    python run_preprocess_ag_news.py
-    ```
-    3-1. You will get the sampled data, but if you want to full data, then use the following script.
-    ```bash
-    python run_preprocess_ag_news.py --sample=False
+    python run_preprocess_direct_ag_news.py
+    python run_preprocess_direct_ag_news.py --sample=False # Use it for full evaluation
+    python run
     ```
 
-4. To evaluate using `Direct` mode, which is generated directly from the prompts, use the following script.
+2. Inference to compute the conditional probability using LLaMA and predict class.
     ```bash
     torchrun --nproc_per_node 1 run_evaluate_direct_llama.py \
-        --data_path samples/text_completions_ag_news.json \
+        --data_path samples/inputs_direct_ag_news.json \
         --output_path samples/outputs_direct_ag_news.json \
         --ckpt_dir checkpoints/llama/7B \
         --tokenizer_path checkpoints/llama/tokenizer.model
     ```
 
-5. To evaluate using `PPL` mode, which is the comparision between candidate completions, use the following script.
+### Method: Channel
+
+`Channel` is to compare the conditional probability `p(x|y)`.
+
+1. Preprocess the data from huggingface datasets using the following scripts. From now on, we use the ag_news dataset.
     ```bash
-    torchrun --nproc_per_node 1 run_evaluate_ppl_llama.py \
-        --data_path samples/text_completions_ag_news.json \
-        --output_path samples/outputs_ppl_ag_news.json \
-        --ckpt_dir checkpoints/llama/7B \
-        --tokenizer_path checkpoints/llama/tokenizer.model
+    python run_preprocess_channel_ag_news.py
+    python run_preprocess_channel_ag_news.py --sample=False # Use it for full evaluation
+    python run
     ```
 
-6. To evaluate using `channel` mode, which is the comparision between candidate completions, use the following script.
+2. Inference to compute the conditional probability using LLaMA and predict class.
     ```bash
     torchrun --nproc_per_node 1 run_evaluate_channel_llama.py \
         --data_path samples/inputs_channel_ag_news.json \
         --output_path samples/outputs_channel_ag_news.json \
+        --ckpt_dir checkpoints/llama/7B \
+        --tokenizer_path checkpoints/llama/tokenizer.model
+    ```
+
+### Method: Pure generation
+
+1. To evaluate using `generate` mode, you can use the preprocessed direct version.
+    ```bash
+    torchrun --nproc_per_node 1 run_evaluate_generate_llama.py \
+        --data_path samples/inputs_direct_ag_news.json \
+        --output_path samples/outputs_generate_ag_news.json \
         --ckpt_dir checkpoints/llama/7B \
         --tokenizer_path checkpoints/llama/tokenizer.model
     ```

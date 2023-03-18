@@ -57,6 +57,7 @@ def load(
     model = Transformer(model_args)
     torch.set_default_tensor_type(torch.FloatTensor)
     model.load_state_dict(checkpoint, strict=False)
+    model.half()
 
     generator = LLaMA(model, tokenizer)
     print(f"Loaded in {time.time() - start_time:.2f} seconds")
@@ -68,7 +69,10 @@ def main(
     output_path: str,
     ckpt_dir: str,
     tokenizer_path: str,
+    temperature: float = 0.8,
+    top_p: float = 0.95,
     max_seq_len: int = 1024,
+    max_gen_len: int = 8,
     max_batch_size: int = 32,
 ):
     local_rank, world_size = setup_model_parallel()
@@ -86,29 +90,18 @@ def main(
     for start_idx in tqdm(range(0, len(data), max_batch_size)):
         end_idx = min(start_idx + max_batch_size, len(data))
         batch = data[start_idx:end_idx]
-        prompts, completions = [], []
-        for example in batch:
-            for candidate in example["candidate_completions"]:
-                prompts.append(example["prompt"])
-                completions.append(candidate)
-        ppl = generator.compute_ppl(prompts, completions)
-        idx = 0
-        for example in batch:
-            example_ppl = []
-            for candidate in example["candidate_completions"]:
-                example_ppl.append(ppl[idx])
-                idx += 1
-            argmin_example_ppl = min(enumerate(example_ppl), key=lambda x: x[1])[0]
-            example_prediction = example["candidate_completions"][argmin_example_ppl]
-            example_ground_truth = example["completion"]
-            example_correct = example_prediction == example_ground_truth
-            output.append(
-                {
-                    "prediction": example_prediction,
-                    "ppl": example_ppl,
-                    "correct": example_correct,
-                }
-            )
+        prompts = [example["prompt"] for example in batch]
+        completions = generator.generate(
+            prompts, max_gen_len=max_gen_len, temperature=temperature, top_p=top_p
+        )
+        completions = [
+            completion[len(prompt) :]
+            for prompt, completion in zip(prompts, completions)
+        ]
+
+        for example, completion in zip(batch, completions):
+            example_correct = example["ground_truth"].lower() in completion.lower()
+            output.append({"prediction": completion, "correct": example_correct})
 
     with open(output_path, "w") as f:
         json.dump(output, f, indent=2)
