@@ -8,6 +8,8 @@ This repository provides a basic codebase for text classification using LLaMA.
 * Device Memory: 34G
 * Host Memory: 252G
 
+If you need other information about hardware, please open an issue.
+
 ## How to use
 
 1. Get the checkpoint from official LLaMA repository from [here](https://github.com/facebookresearch/llama).  
@@ -76,4 +78,15 @@ This repository provides a basic codebase for text classification using LLaMA.
 
 ## Citation
 
-It would be welcome if you use our codebase for your research.
+It would be welcome citing my work if you use my codebase for your research.
+
+```
+@software{Lee_Simple_Text_Classification_2023,
+    author = {Lee, Seonghyeon},
+    month = {3},
+    title = {{Simple Text Classification Codebase using LLaMA}},
+    url = {https://github.com/github/sh0416/llama-classification},
+    version = {1.0.0},
+    year = {2023}
+}
+```
