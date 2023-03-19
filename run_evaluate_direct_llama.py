@@ -89,7 +89,7 @@ def main(
         prompts, completions = [], []
         for example in batch:
             for label_word in example["label_words"]:
-                prompts.append(example["prompt"])
+                prompts.append(example["prompt"].format(text=example["text"]))
                 completions.append(example["completion"].format(label_word=label_word))
         ppl = []
         for micro_start_idx in range(0, len(prompts), max_batch_size):

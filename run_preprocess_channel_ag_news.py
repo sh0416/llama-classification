@@ -28,7 +28,8 @@ def main(data_path="samples/inputs_channel_ag_news.json", sample=True):
         data.append(
             {
                 "prompt": prompt,
-                "completion": test["text"],
+                "completion": "{text}",
+                "text": test["text"],
                 "label_words": label_words,
                 "ground_truth": label_words[test["label"]],
             }

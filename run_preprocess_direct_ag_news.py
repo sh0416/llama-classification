@@ -26,8 +26,9 @@ def main(data_path="samples/inputs_direct_ag_news.json", sample=True):
     for test in test_dataset:
         data.append(
             {
-                "prompt": prompt + f"Article: {test['text']}\nCategory:",
+                "prompt": prompt + "Article: {text}\nCategory:",
                 "completion": "{label_word}",
+                "text": test['text'],
                 "label_words": label_words,
                 "ground_truth": label_words[test["label"]],
             }
