@@ -48,7 +48,9 @@ class LLaMA:
                 next_token = torch.argmax(logits, dim=-1)
             next_token = next_token.reshape(-1)
             # only replace token if prompt has already been generated
-            next_token = torch.where(input_text_mask[:, cur_pos], tokens[:, cur_pos], next_token)
+            next_token = torch.where(
+                input_text_mask[:, cur_pos], tokens[:, cur_pos], next_token
+            )
             tokens[:, cur_pos] = next_token
             prev_pos = cur_pos
 
@@ -70,7 +72,9 @@ class LLaMA:
         assert bsz <= params.max_batch_size, (bsz, params.max_batch_size)
 
         prompt_tokens = [self.tokenizer.encode(x, bos=True, eos=False) for x in prompts]
-        completion_tokens = [self.tokenizer.encode(x, bos=False, eos=True) for x in completions]
+        completion_tokens = [
+            self.tokenizer.encode(x, bos=False, eos=True) for x in completions
+        ]
         tokens = [x + y for x, y in zip(prompt_tokens, completion_tokens)]
         labels = [[-100] * len(x) + y for x, y in zip(prompt_tokens, completion_tokens)]
 
@@ -81,21 +85,21 @@ class LLaMA:
         tokens = [x + [self.tokenizer.eos_id] * (end_pos - len(x)) for x in tokens]
         labels = [x + [-100] * (end_pos - len(x)) for x in labels]
 
+        tokens = [x[:-1] for x in tokens]
+        labels = [x[1:] for x in labels]
+
         tokens = torch.tensor(tokens, dtype=torch.long).cuda()
         labels = torch.tensor(labels, dtype=torch.long).cuda()
         assert torch.all(torch.any(labels != -100, dim=1))
 
-        prev_pos, losses = 0, []
-        for cur_pos in range(start_pos, end_pos):
-            logits = self.model.forward(tokens[:, prev_pos:cur_pos], prev_pos)
-            with torch.no_grad():
-                losses.append(F.cross_entropy(logits, labels[:, cur_pos], reduction="none"))
-            prev_pos = cur_pos
-
-        losses = torch.stack(losses, dim=1)
-        assert torch.all(torch.count_nonzero(losses, dim=1) > 0)
-        losses = torch.sum(losses, dim=1) / torch.count_nonzero(losses, dim=1)
-        return losses.cpu().tolist()
+        logits = self.model.forward(tokens, 0, True)
+        with torch.no_grad():
+            losses = F.cross_entropy(
+                logits.view(-1, logits.shape[-1]), labels.view(-1), reduction="none"
+            ).view_as(labels)
+            count = torch.count_nonzero(labels != -100, dim=1)
+            losses = torch.sum(losses, dim=1) / count
+            return losses.cpu().tolist()
 
 
 def sample_top_p(probs, p):
