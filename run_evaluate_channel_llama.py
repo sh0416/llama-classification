@@ -106,7 +106,7 @@ def main(
             for label_word in example["label_words"]:
                 example_log_probs.append(log_probs[idx])
                 idx += 1
-            argmax_log_probs = min(enumerate(example_log_probs), key=lambda x: x[1])[0]
+            argmax_log_probs = max(enumerate(example_log_probs), key=lambda x: x[1])[0]
             example_prediction = example["label_words"][argmax_log_probs]
             example_ground_truth = example["ground_truth"]
             example_correct = example_prediction == example_ground_truth
