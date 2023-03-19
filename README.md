@@ -100,7 +100,8 @@ If you need other information about hardware, please open an issue.
 
 | Dataset | num_examples| k  | method | accuracy | inference time |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| ag_news | 7600 | 1 | direct  | 0.2883 | 00:38:40  |
+| ag_news | 7600 | 1 | direct  | 0.7682 | 00:38:40  |
+| ag_news | 7600 | 1 | direct+calibrated  | 0.8567 | 00:38:40  |
 | ag_news | 7600 | 1 | channel | 0.7809 | 00:38:37 |
 
 ## Todo list

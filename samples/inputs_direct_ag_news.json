@@ -1,40 +1,8 @@
 [
   {
-    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.\nCategory:",
+    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: {text}\nCategory:",
     "completion": "{label_word}",
-    "label_words": [
-      "World",
-      "Sports",
-      "Business",
-      "Science and technology"
-    ],
-    "ground_truth": "Science and technology"
-  },
-  {
-    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: Prediction Unit Helps Forecast Wildfires (AP) AP - It's barely dawn when Mike Fitzpatrick starts his shift with a blur of colorful maps, figures and endless charts, but already he knows what the day will bring. Lightning will strike in places he expects. Winds will pick up, moist places will dry and flames will roar.\nCategory:",
-    "completion": "{label_word}",
-    "label_words": [
-      "World",
-      "Sports",
-      "Business",
-      "Science and technology"
-    ],
-    "ground_truth": "Science and technology"
-  },
-  {
-    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: Ky. Company Wins Grant to Study Peptides (AP) AP - A company founded by a chemistry researcher at the University of Louisville won a grant to develop a method of producing better peptides, which are short chains of amino acids, the building blocks of proteins.\nCategory:",
-    "completion": "{label_word}",
-    "label_words": [
-      "World",
-      "Sports",
-      "Business",
-      "Science and technology"
-    ],
-    "ground_truth": "Science and technology"
-  },
-  {
-    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.\nCategory:",
-    "completion": "{label_word}",
+    "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
     "label_words": [
       "World",
       "Sports",
@@ -42,5 +10,41 @@
       "Science and technology"
     ],
     "ground_truth": "Business"
+  },
+  {
+    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: {text}\nCategory:",
+    "completion": "{label_word}",
+    "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+    "label_words": [
+      "World",
+      "Sports",
+      "Business",
+      "Science and technology"
+    ],
+    "ground_truth": "Science and technology"
+  },
+  {
+    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: {text}\nCategory:",
+    "completion": "{label_word}",
+    "text": "Ky. Company Wins Grant to Study Peptides (AP) AP - A company founded by a chemistry researcher at the University of Louisville won a grant to develop a method of producing better peptides, which are short chains of amino acids, the building blocks of proteins.",
+    "label_words": [
+      "World",
+      "Sports",
+      "Business",
+      "Science and technology"
+    ],
+    "ground_truth": "Science and technology"
+  },
+  {
+    "prompt": "Article: Rocket explodes at scrapyard, killing 10 GHAZIABAD: Thursday was just another working day for Santosh Khushwaha (22), a worker at Bhushan Steel #39;s plant in Sahibabad. Till about 3.20 pm.\nCategory: World\nArticle: Mutu agent #39;s shock at drug claim Adrian Mutu #39;s agent claims the Chelsea striker is  quot;absolutely shocked quot; at reports that he failed a drugs test. Newspaper allegations suggest that Mutu tested positive during a random check at Chelsea in September.\nCategory: Sports\nArticle: Genesis Team Hopeful About Samples Jet Propulsion Lab -- Genesis team scientists and engineers continue their work on the mission's sample return canister in a specially constructed clean room at the U.S. Army Proving Ground in Dugway, Utah...\nCategory: Science and technology\nArticle: Fannie Mae's Institutional Arrogance Pity that Fannie's management decided to test the limits of an implied Federal guarantee.\nCategory: Business\nArticle: {text}\nCategory:",
+    "completion": "{label_word}",
+    "text": "Prediction Unit Helps Forecast Wildfires (AP) AP - It's barely dawn when Mike Fitzpatrick starts his shift with a blur of colorful maps, figures and endless charts, but already he knows what the day will bring. Lightning will strike in places he expects. Winds will pick up, moist places will dry and flames will roar.",
+    "label_words": [
+      "World",
+      "Sports",
+      "Business",
+      "Science and technology"
+    ],
+    "ground_truth": "Science and technology"
   }
 ]
