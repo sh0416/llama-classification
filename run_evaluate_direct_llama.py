@@ -91,27 +91,29 @@ def main(
             for label_word in example["label_words"]:
                 prompts.append(example["prompt"].format(text=example["text"]))
                 completions.append(example["completion"].format(label_word=label_word))
-        ppl = []
+        log_probs = []
         for micro_start_idx in range(0, len(prompts), max_batch_size):
             micro_end_idx = min(micro_start_idx + max_batch_size, len(prompts))
             micro_prompts = prompts[micro_start_idx:micro_end_idx]
             micro_completions = completions[micro_start_idx:micro_end_idx]
-            ppl.extend(generator.compute_ppl(micro_prompts, micro_completions))
+            log_probs.extend(
+                generator.compute_log_probs(micro_prompts, micro_completions)
+            )
 
         idx = 0
         for example in batch:
-            example_ppl = []
+            example_log_probs = []
             for label_word in example["label_words"]:
-                example_ppl.append(ppl[idx])
+                example_log_probs.append(log_probs[idx])
                 idx += 1
-            argmin_example_ppl = min(enumerate(example_ppl), key=lambda x: x[1])[0]
-            example_prediction = example["label_words"][argmin_example_ppl]
+            argmax_log_probs = max(enumerate(example_log_probs), key=lambda x: x[1])[0]
+            example_prediction = example["label_words"][argmax_log_probs]
             example_ground_truth = example["ground_truth"]
             example_correct = example_prediction == example_ground_truth
             output.append(
                 {
                     "prediction": example_prediction,
-                    "ppl": example_ppl,
+                    "log_probs": example_log_probs,
                     "correct": example_correct,
                 }
             )

@@ -42,7 +42,7 @@ If you need other information about hardware, please open an issue.
 1. Preprocess the data from huggingface datasets using the following scripts. From now on, we use the ag_news dataset.
     ```bash
     python run_preprocess_direct_ag_news.py
-    python run_preprocess_direct_ag_news.py --sample=False # Use it for full evaluation
+    python run_preprocess_direct_ag_news.py --sample=False --data_path=real/inputs_direct_ag_news.json # Use it for full evaluation
     ```
 
 2. Inference to compute the conditional probability using LLaMA and predict class.
@@ -54,6 +54,18 @@ If you need other information about hardware, please open an issue.
         --tokenizer_path checkpoints/llama/tokenizer.model
     ```
 
+`Calibration` is to improve direct method with calibration method.
+
+1. Calibrate using the following command.
+    ```bash
+    torchrun --nproc_per_node 1 run_evaluate_direct_calibrate_llama.py \
+        --direct_input_path samples/inputs_direct_ag_news.json \
+        --direct_output_path samples/outputs_direct_ag_news.json \
+        --output_path samples/outputs_direct_calibrate_ag_news.json \
+        --ckpt_dir checkpoints/llama/7B \
+        --tokenizer_path checkpoints/llama/tokenizer.model
+    ```
+
 ### Method: Channel
 
 `Channel` is to compare the conditional probability `p(x|y)`.
@@ -61,7 +73,7 @@ If you need other information about hardware, please open an issue.
 1. Preprocess the data from huggingface datasets using the following scripts. From now on, we use the ag_news dataset.
     ```bash
     python run_preprocess_channel_ag_news.py
-    python run_preprocess_channel_ag_news.py --sample=False # Use it for full evaluation
+    python run_preprocess_channel_ag_news.py --sample=False --data_path=real/inputs_channel_ag_news.json # Use it for full evaluation
     ```
 
 2. Inference to compute the conditional probability using LLaMA and predict class.

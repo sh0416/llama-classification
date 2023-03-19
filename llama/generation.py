@@ -66,7 +66,9 @@ class LLaMA:
             decoded.append(self.tokenizer.decode(t))
         return decoded
 
-    def compute_ppl(self, prompts: List[str], completions: List[str]) -> List[float]:
+    def compute_log_probs(
+        self, prompts: List[str], completions: List[str]
+    ) -> List[float]:
         bsz = len(prompts)
         params = self.model.params
         assert bsz <= params.max_batch_size, (bsz, params.max_batch_size)
@@ -97,9 +99,8 @@ class LLaMA:
             losses = F.cross_entropy(
                 logits.view(-1, logits.shape[-1]), labels.view(-1), reduction="none"
             ).view_as(labels)
-            count = torch.count_nonzero(labels != -100, dim=1)
-            losses = torch.sum(losses, dim=1) / count
-            return losses.cpu().tolist()
+            log_probs = torch.sum(-losses, dim=1)
+            return log_probs.cpu().tolist()
 
 
 def sample_top_p(probs, p):
