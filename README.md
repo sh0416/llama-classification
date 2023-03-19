@@ -84,13 +84,20 @@ If you need other information about hardware, please open an issue.
         --tokenizer_path checkpoints/llama/tokenizer.model
     ```
 
+## Experiments
+
+| Dataset | k | method | accuracy |
+|:---:|:---:|:---:|:---:|
+| ag_news | 1 | direct  | 0.2882 |
+| ag_news | 1 | channel | 0.7816 |
+
 ## Todo list
 
 - [x] Implement channel method
+- [x] Experimental report
 - [ ] Implement other calibration method
 - [ ] Support other dataset inside the huggingface datasets
 - [ ] Other evaluation metric to measure the different characteristic of foundation model (LLaMA)
-- [ ] Experimental report
 
 ## Final remark
 
