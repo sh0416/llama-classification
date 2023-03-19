@@ -86,17 +86,21 @@ If you need other information about hardware, please open an issue.
 
 ## Experiments
 
-| Dataset | k | method | accuracy |
+| Dataset | num_examples| k  | method | accuracy | inference time (h) |
 |:---:|:---:|:---:|:---:|
-| ag_news | 1 | direct  | 0.2882 |
-| ag_news | 1 | channel | 0.7816 |
+| ag_news | 7600 | 1 | direct  | 0.2882 | 1.1  |
+| ag_news | 7600 | 1 | channel | 0.7816 | 2.33 |
 
 ## Todo list
 
 - [x] Implement channel method
-- [x] Experimental report
+- [ ] Experimental report
+  - [x] Direct
+  - [x] Channel
+  - [ ] Generation
 - [ ] Implement other calibration method
 - [ ] Support other dataset inside the huggingface datasets
+- [ ] Implement LLM.int8
 - [ ] Other evaluation metric to measure the different characteristic of foundation model (LLaMA)
 
 ## Final remark
