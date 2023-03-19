@@ -87,7 +87,7 @@ If you need other information about hardware, please open an issue.
 ## Experiments
 
 | Dataset | num_examples| k  | method | accuracy | inference time (h) |
-|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|:---:|
 | ag_news | 7600 | 1 | direct  | 0.2882 | 1.1  |
 | ag_news | 7600 | 1 | channel | 0.7816 | 2.33 |
 
@@ -121,7 +121,7 @@ It would be welcome citing my work if you use my codebase for your research.
     month = {3},
     title = {{Simple Text Classification Codebase using LLaMA}},
     url = {https://github.com/github/sh0416/llama-classification},
-    version = {1.0.0},
+    version = {1.1.0},
     year = {2023}
 }
 ```
